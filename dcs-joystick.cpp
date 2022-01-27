@@ -38,7 +38,7 @@ void read_button_states() {
     //    i.e. with leading zeroes: 0b0000000011111111 << 8 becomes 0b1111111100000000
     // 3. Add the value to the combined button states variable: button_states +=
     //    i.e. 0b0000000011111111 + 0b1111111100000000 == 0b1111111111111111
-    button_states += (uint32_t)SPI.transfer(0) << shift_register * 8;
+    button_states += (uint32_t)(SPI.transfer(0)) << shift_register * 8;
   }
 }
 
@@ -47,7 +47,7 @@ void write_joystick() {
   for (int button = 0; button < BUTTON_COUNT; button++) {
     // Create a button mask used to read only one bit from the button states.
     // 1 << 0 is 0b00000001, 1 << 1 is 0b00000010, 1 << 2 is 0b00000100, etc.
-    uint32_t button_mask = 1 << button;
+    uint32_t button_mask = (uint32_t)(1) << button;
 
     // Use the mask to do "bitwise and" math on the button states.
 
