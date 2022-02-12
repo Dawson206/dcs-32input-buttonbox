@@ -11,7 +11,7 @@
     (via_costs 50)
     (plane_via_costs 5)
     (start_ripup_costs 100)
-    (start_pass_no 2097)
+    (start_pass_no 233)
     (layer_rule F.Cu
       (active on)
       (preferred_direction vertical)
@@ -31,6 +31,15 @@
     (clear 125.0 (type smd_to_turn_gap))
     (clear 50.0 (type smd_smd))
   )
+  (padstack "Via[0-1]_1200:700_um"
+    (shape
+      (circle F.Cu 1200.0 0.0 0.0)
+    )
+    (shape
+      (circle B.Cu 1200.0 0.0 0.0)
+    )
+    (attach off)
+  )
   (padstack "Via[0-1]_800:400_um"
     (shape
       (circle F.Cu 800.0 0.0 0.0)
@@ -39,6 +48,15 @@
       (circle B.Cu 800.0 0.0 0.0)
     )
     (attach off)
+  )
+  (via 
+    "Via[0-1]_1200:700_um" "Via[0-1]_1200:700_um" default
+  )
+  (via 
+    "Via[0-1]_1200:700_um-kicad_default" "Via[0-1]_1200:700_um" "kicad_default"
+  )
+  (via 
+    "Via[0-1]_1200:700_um-Power" "Via[0-1]_1200:700_um" Power
   )
   (via 
     "Via[0-1]_800:400_um" "Via[0-1]_800:400_um" default
@@ -59,14 +77,14 @@
     Power "Via[0-1]_800:400_um-Power"
   )
   (class default
-    LOAD SCLK MISO "unconnected-(U1-Pad7)" "9-16" "17-24" "unconnected-(U2-Pad9)" "25-32"
-    "unconnected-(U3-Pad9)" "unconnected-(U4-Pad9)" "unconnected-(U4-Pad10)" "unconnected-(U5-Pad1)" "unconnected-(U5-Pad2)" "unconnected-(U5-Pad5)" "unconnected-(U5-Pad6)" "unconnected-(U5-Pad7)"
-    "unconnected-(U5-Pad8)" "unconnected-(U5-Pad9)" "unconnected-(U5-Pad11)" "unconnected-(U5-Pad12)" "unconnected-(U5-Pad13)" "unconnected-(U5-Pad16)" "unconnected-(U5-Pad17)" "unconnected-(U5-Pad18)"
-    "unconnected-(U5-Pad19)" "unconnected-(U5-Pad20)" "unconnected-(U5-Pad21)" "unconnected-(U5-Pad22)" "/D0_0" "/D1_0" "/D2_0" "/D3_0"
-    "/D4_0" "/D5_0" "/D6_0" "/D7_0" "/D0_2" "/D1_2" "/D2_2" "/D3_2"
-    "/D4_2" "/D5_2" "/D6_2" "/D7_2" "/D0_1" "/D1_1" "/D2_1" "/D3_1"
-    "/D4_1" "/D5_1" "/D6_1" "/D7_1" "/D0_3" "/D1_3" "/D2_3" "/D3_3"
-    "/D4_3" "/D5_3" "/D6_3" "/D7_3"
+    "@:no_net_0" "@:no_net_1" LOAD SCLK MISO "unconnected-(U1-Pad9)" "9-16" "17-24"
+    "unconnected-(U2-Pad7)" "25-32" "unconnected-(U3-Pad7)" "unconnected-(U4-Pad7)" "unconnected-(U4-Pad10)" "unconnected-(U5-Pad1)" "unconnected-(U5-Pad2)" "unconnected-(U5-Pad5)"
+    "unconnected-(U5-Pad6)" "unconnected-(U5-Pad7)" "unconnected-(U5-Pad8)" "unconnected-(U5-Pad9)" "unconnected-(U5-Pad11)" "unconnected-(U5-Pad12)" "unconnected-(U5-Pad13)" "unconnected-(U5-Pad14)"
+    "unconnected-(U5-Pad17)" "unconnected-(U5-Pad18)" "unconnected-(U5-Pad19)" "unconnected-(U5-Pad20)" "unconnected-(U5-Pad21)" "unconnected-(U5-Pad22)" "/D0_0" "/D1_0"
+    "/D2_0" "/D3_0" "/D4_0" "/D5_0" "/D6_0" "/D7_0" "/D0_2" "/D1_2"
+    "/D2_2" "/D3_2" "/D4_2" "/D5_2" "/D6_2" "/D7_2" "/D0_1" "/D1_1"
+    "/D2_1" "/D3_1" "/D4_1" "/D5_1" "/D6_1" "/D7_1" "/D0_3" "/D1_3"
+    "/D2_3" "/D3_3" "/D4_3" "/D5_3" "/D6_3" "/D7_3"
     (clearance_class default)
     (via_rule default)
     (rule
