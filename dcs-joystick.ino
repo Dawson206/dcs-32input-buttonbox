@@ -7,12 +7,18 @@
 #define BUTTON_COUNT 32
 #define BUTTON_SHIFT_REGISTER_COUNT 4
 
+#define BOUNCE_MS 50
+
 // Create the Joystick object to act like a joystick.
 Joystick_ Joystick;
 
 // Initialize button state variables that can be read and written to from anywhere.
 uint32_t button_states = 0;
 uint32_t last_button_states;
+
+// Variables for handling button debounce.
+unsigned long bounce_last_change[32] = {0};
+bool bounce_new_state[32] = {0};
 
 void sample_button_states() {
   digitalWrite(BUTTON_SAMPLE_PIN, LOW);
@@ -76,10 +82,15 @@ void write_joystick() {
     // Do the same thing with the last button states, too.
     bool last_button_state = last_button_states & button_mask;
 
-    // If the new state is different than the old state...
-    if (button_state != last_button_state) {
-      // Set the joystick button in this loop to the button state.
-      Joystick.setButton(button, button_state);
+    if (button_state != last_button_state || button_state != bounce_new_state[button]) {
+      if (bounce_last_change[button] + BOUNCE_MS < millis()) {
+        bounce_new_state[button] = button_state;
+        Joystick.setButton(button, button_state);
+      }
+
+      if (button_state != last_button_state) {
+        bounce_last_change[button] = millis();
+      }
     }
   }
 }
