@@ -7,7 +7,7 @@
 #define BUTTON_COUNT 32
 #define BUTTON_SHIFT_REGISTER_COUNT 4
 
-#define BOUNCE_MS 10
+#define BOUNCE_MS 50
 
 // Create the Joystick object to act like a joystick.
 Joystick_ Joystick;
