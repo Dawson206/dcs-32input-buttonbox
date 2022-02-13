@@ -17,7 +17,7 @@ uint32_t button_states = 0;
 uint32_t last_button_states;
 
 // Variables for handling button debounce.
-unsigned long bounce_last_change[32] = 0;
+unsigned long bounce_last_change[32] = {0};
 bool bounce_new_state[32] = {0};
 
 void sample_button_states() {
