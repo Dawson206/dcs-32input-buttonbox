@@ -83,7 +83,7 @@ void write_joystick() {
     bool last_button_state = last_button_states & button_mask;
 
     if (button_state != last_button_state || button_state != bounce_new_state[button]) {
-      if (bounce_last_change[button] + BOUNCE_MS < millis()) {
+      if (millis() - bounce_last_change[button] > BOUNCE_MS) {
         bounce_new_state[button] = button_state;
         Joystick.setButton(button, button_state);
       }
